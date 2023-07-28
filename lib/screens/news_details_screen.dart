@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_test_task/models/news_model.dart';
-import 'package:news_test_task/widgets/carousel_img_container.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
   final NewsArticleModel newsArticleModel;
@@ -32,42 +31,14 @@ class NewsDetailsScreen extends StatelessWidget {
                   icon: Image.asset(
                     "images/back.png",
                     color: Colors.white,
+                    height: 24,
+                    width: 24,
                   ),
                 ),
               ),
             ],
           ),
           _description(),
-          // ListView.builder(
-          //     itemCount: allNewsArticleModels
-          //         .where((currentModel) => currentModel != newsArticleModel)
-          //         .length,
-          //     shrinkWrap: true,
-          //     physics: NeverScrollableScrollPhysics(),
-          //     itemBuilder: (context, index) {
-          //       var otherNews = allNewsArticleModels
-          //           .where((currentModel) => currentModel != newsArticleModel)
-          //           .toList()[index];
-          //       return Padding(
-          //         padding: const EdgeInsets.symmetric(vertical: 8),
-          //         child: InkWell(
-          //           onTap: () {
-          //             // context
-          //             // .read<NewsBloc>()
-          //             // .add(SaveArticleEvent(model: newsArticleModel));
-          //             Get.to(() => NewsDetailsScreen(
-          //                   newsArticleModel: newsArticleModel,
-          //                   allNewsArticleModels: allNewsArticleModels,
-          //                 ));
-          //           },
-          //           child: CarouselImgContainer(
-          //             newsArticleModel: otherNews,
-          //             height: 300,
-          //           ),
-          //         ),
-          //       );
-          //       // return Text("data");
-          //     })
         ],
       ),
     );

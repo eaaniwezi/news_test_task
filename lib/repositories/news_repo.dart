@@ -13,7 +13,7 @@ Future<List<NewsArticleModel>> getAllNews() async {
   List<NewsArticleModel> _newsArticleList = [];
   try {
     Response response =
-        await dio.get("$baseUrl/everything?q=bitcoin&apiKey=$apiKey&pageSize=5");
+        await dio.get("$baseUrl/everything?q=bitcoin&apiKey=$apiKey&pageSize=15");
     var data = response.data;
     if (response.statusCode == 200) {
       for (var item in data["articles"]) {
@@ -31,7 +31,7 @@ Future<List<NewsArticleModel>> getAllNews() async {
 
   Future<List<NewsArticleModel>> getReadNews() async {
     final prefs = await SharedPreferences.getInstance();
-    List<String>? savedNews = prefs.getStringList('savedNews');
+    List<String>? savedNews = prefs.getStringList('readNews');
     if (savedNews == null) {
       return [];
     } else {

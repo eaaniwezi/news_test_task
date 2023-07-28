@@ -1,4 +1,12 @@
 Тестовое задание на позицию Flutter
+
+Stack Used: Flutter(Dart), Flutter Bloc (for Managing state)
+To run this app on your device, 
+--FIRSTLY, you will need to go to https://newsapi.org/ to generate an APIKEY
+--SECONDLY, go to the lib\repositories\news_repository.dart
+--THIRDLY, add the value of the variable "apiKey" with your newly generated APIKEY, (example, if your generated APIKEY is xxxxxxxxxxxxx, it should look like this: const apiKey = "xxxxxxxxxxxxx";
+That's all...You could run your code..
+
 разработчика
 Задача
 Нужно реализовать функциональность экранов: список новостей и просмотр одной
