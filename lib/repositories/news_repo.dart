@@ -9,25 +9,24 @@ const baseUrl = "https://newsapi.org/v2";
 class NewsRepo {
   final dio = Dio();
 
-Future<List<NewsArticleModel>> getAllNews() async {
-  List<NewsArticleModel> _newsArticleList = [];
-  try {
-    Response response =
-        await dio.get("$baseUrl/everything?q=bitcoin&apiKey=$apiKey&pageSize=15");
-    var data = response.data;
-    if (response.statusCode == 200) {
-      for (var item in data["articles"]) {
-        NewsArticleModel _newsArticleModel = NewsArticleModel.fromJson(item);
-        _newsArticleList.add(_newsArticleModel);
+  Future<List<NewsArticleModel>> getAllNews() async {
+    List<NewsArticleModel> _newsArticleList = [];
+    try {
+      Response response = await dio
+          .get("$baseUrl/everything?q=bitcoin&apiKey=$apiKey&pageSize=15");
+      var data = response.data;
+      if (response.statusCode == 200) {
+        for (var item in data["articles"]) {
+          NewsArticleModel _newsArticleModel = NewsArticleModel.fromJson(item);
+          _newsArticleList.add(_newsArticleModel);
+        }
+        return _newsArticleList;
       }
       return _newsArticleList;
+    } catch (e) {
+      return _newsArticleList;
     }
-    return _newsArticleList;
-  } catch (e) {
-    return _newsArticleList;
   }
-}
-
 
   Future<List<NewsArticleModel>> getReadNews() async {
     final prefs = await SharedPreferences.getInstance();
@@ -44,7 +43,7 @@ Future<List<NewsArticleModel>> getAllNews() async {
   Future<bool> readArticle(NewsArticleModel model) async {
     final prefs = await SharedPreferences.getInstance();
     final oldNews = await getReadNews();
-    // if item is present
+
     if (oldNews.contains(model)) {
       return false;
     }
